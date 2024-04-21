@@ -41,14 +41,3 @@ module "ecsCluster" {
     target_group_name              = local.target_group_name
     demo_app_service_name          = local.demo_app_service_name
 }
-
-module "api-gateway" {
-    source = "./modules/apigateway"
-    apigateway = local.apigateway
-    aws_alb_uri = module.ecsCluster.alb_dns_name
-    staging = local.staging
-    sec_api_gateway = module.ecsCluster.aws_security_group
-    aws_subnet-1 = module.ecsCluster.aws_subnet-1
-    aws_subnet-2 = module.ecsCluster.aws_subnet-2
-    aws_listener = module.ecsCluster.aws_alb_listener
-}
