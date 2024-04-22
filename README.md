@@ -34,6 +34,7 @@ Step 1: Clone the repo using
     `git clone `
 
 Step 2: Log in to your aws account, search for IAM
+
     * go to user
 
     * Write the name of your user (no need to put console access, since you will only access the cli)
@@ -47,7 +48,7 @@ Step 2: Log in to your aws account, search for IAM
     * in the right hand side, tap the `Create access key`
 
     * now select the `command line interface (CLI)` to create the keys (dont forget to tap the confirmation below)
-    
+
     * now use the accss keys to configure the user in the cli
 
 Step 3: Install the terraform and aws cli v2, configure them in the environmental variables (you will find a lot of resource to figure this out)
