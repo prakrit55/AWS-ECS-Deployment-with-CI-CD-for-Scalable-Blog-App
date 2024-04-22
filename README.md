@@ -8,11 +8,18 @@ Diagram
 
 # Introduction
 
+
+
+
 Welcome to the application deployment project with AWS! 
 We will walk thorugh the process of setting up a robust three tier architecture on AWS using s3, ecs, loadbalancer, mongodb, etc.
 This project aims to provide hands-on experience in deploying, securing, and monitoring a scalable application environment.This is the first part of the project where we will create the architecture and for the later part, the ci/cd will be discussed here ->
 
 # Project Overview :
+
+
+
+
 
 In this project, we will cover the following key points:
 
@@ -23,6 +30,10 @@ In this project, we will cover the following key points:
     3. Terraform Commands: Use terraform commands such as terraform init, terraform plan, terraform destroy to create and destroy the infra.
 
 # Prequisite
+
+
+
+
 
 Before configuring the services, ensure you are having the following credentials in place:
     * An AWS account with the necessary permissions to create resources.
