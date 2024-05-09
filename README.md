@@ -26,12 +26,11 @@ This project aims to provide hands-on experience in deploying, securing, and mon
 
 In this project, we will cover the following key points:
 
-    1. IAM user setup : Create user with necessary permissions to facilitate deployment and management activities. Store the aws credentials(aws access key, and aws secret access key), which will later be used to configure the AWS cli to create the whole architecture.
+1. IAM user setup : Create user with necessary permissions to facilitate deployment and management activities. Store the aws credentials(aws access key, and aws secret access key), which will later be used to configure the AWS cli to create the whole architecture.
 
-    2. Infrastructure as a Code(IaC) : Install Terraform and AWS cli to setup the Infra.
+2. Infrastructure as a Code(IaC) : Install Terraform and AWS cli to setup the Infra.
 
-    3. Terraform Commands: Use terraform commands such as terraform init, terraform plan, terraform destroy to create and destroy the infra.
-
+3. Terraform Commands: Use terraform commands such as terraform init, terraform plan, terraform destroy to create and destroy the infra.
 
 
 
@@ -52,60 +51,61 @@ Step 1: Clone the repo using
 
 Step 2: Log in to your aws account, search for IAM
 
-    * go to user
+* go to user
 
-    * Write the name of your user (no need to put console access, since you will only access the cli)
+* Write the name of your user (no need to put console access, since you will only access the cli)
 
-    * select `attach the policies directly`
+* select `attach the policies directly`
 
-    * for demo purpose we can give `AdministratorAccess` but not suggested for production
+* for demo purpose we can give `AdministratorAccess` but not suggested for production
 
-    * Create the user, then you will be returned to the user dashboard, press the user name
+* Create the user, then you will be returned to the user dashboard, press the user name
 
-    * in the right hand side, tap the `Create access key`
+* in the right hand side, tap the `Create access key`
 
-    * now select the `command line interface (CLI)` to create the keys (dont forget to tap the confirmation below)
+* now select the `command line interface (CLI)` to create the keys (dont forget to tap the confirmation below)
 
-    * now use the accss keys to configure the user in the cli
+* now use the accss keys to configure the user in the cli
 
 Step 3: Install the terraform and aws cli v2, configure them in the environmental variables (you will find a lot of resource to figure this out)
 
 Step 4: Considering you have already set up the above resources,
-    * tap `aws configure` in the cli and give the previously created aws access key and secret access key to save the user, you can also give the region where the resource to be created.
+* tap `aws configure` in the cli and give the previously created aws access key and secret access key to save the user, you can also give the region where the resource to be created.
 
 Step 5: Move to the repo which you have cloned previously.
 
 Step 6: This step has to be performed in accordance to the next part of the project, move to the second repository and clone the repo and  create you own ci/cd in your repo.
 
 Step 7: Considering you are done with `step 6`, lets create the infra.
-    * Let us first create the `ECR private repo` and `the s3 where the frontend to be hosted`.
+* Let us first create the `ECR private repo` and `the s3 where the frontend to be hosted`.
 
-    * comment the whole `ECS module in main.tf`
+* comment the whole `ECS module in main.tf`
 
-    * now in the cli write `terraform init` to initialize the tf code, it will take bit of time to configure
+* now in the cli write `terraform init` to initialize the tf code, it will take bit of time to configure
 
-    * now tap `terraform plan`, that will show the resources that will get created
+* now tap `terraform plan`, that will show the resources that will get created
 
-    * now tap `terraform apply --auto-approve`, after a while the ecr and s3 bucket will get created.
+* now tap `terraform apply --auto-approve`, after a while the ecr and s3 bucket will get created.
 
-    * now move to the other repo you have created and make a small change in the code such as a space at the end of the lines(you can directly create the change in github or can clone the repo and change it by using the below commands)
-    create the small change, move to the cli space of the repo cloned, use command `git add`, `git commit -m "any message"`, `git push` to push the code to your repository, this will run the automated ci/cd pipeline and will push the backend image to `ECR` and frontend build `to the S3` bucket.
+* now move to the other repo you have created and make a small change in the code such as a space at the end of the lines(you can directly create the change in github or can clone the repo and change it by using the below commands)
+create the small change, move to the cli space of the repo cloned, use command `git add`, `git commit -m "any message"`, `git push` to push the code to your repository, this will run the automated ci/cd pipeline and will push the backend image to `ECR` and frontend build `to the S3` bucket.
 
-    * now return to the directory where terraform code is present, un-comment the `ECS module`
+* now return to the directory where terraform code is present, un-comment the `ECS module`
 
-    * in the cli of the repo, tap `terraform init`, `terraform plan`, `terraform apply --auto approve`, to create the ecs cluster and other things.
+* in the cli of the repo, tap `terraform init`, `terraform plan`, `terraform apply --auto approve`, to create the ecs cluster and other things.
 
-    * after a while, you will find that the application loadbalancer, ECS service, task is created
+* after a while, you will find that the application loadbalancer, ECS service, task is created
 
-    * now take the url of the loadbalancer and write it in the repo where you have kept you code (in `my-blog-app/src/api/api.tsx`) and replace it in `API_URL`
+* now take the url of the loadbalancer and write it in the repo where you have kept you code (in `my-blog-app/src/api/api.tsx`) and replace it in `API_URL`
 
-    * save the changes, add the changes, commit the changes and push it with the above git commands mentioned; wait until the ci/cd has been completed.
+* save the changes, add the changes, commit the changes and push it with the above git commands mentioned; wait until the ci/cd has been completed.
 
-    * go to the aws s3, `frontend` bucket and check below the properties section, you will find the url where the frontend is hosted.
+* go to the aws s3, `frontend` bucket and check below the properties section, you will find the url where the frontend is hosted.
 
-    * now in your browser, paste the url to get the application.
+* now in your browser, paste the url to get the application.
 
-    * after you are done with the application, run `terraform destroy --auto-approve` to destroy the entire infra. 
+* after you are done with the application, run `terraform destroy --auto-approve` to destroy the entire infra. 
+
 
 # Explanation
 
