@@ -2,7 +2,8 @@
 
 Diagram
 
-![alt text](<media/Screenshot (299).png>)
+
+![alt text](<media/tffm.png>)
 
 
 
@@ -13,7 +14,7 @@ Diagram
 
 Welcome to the application deployment project with AWS! 
 We will walk thorugh the process of setting up a robust three tier architecture on AWS using s3, ecs, loadbalancer, mongodb, etc.
-This project aims to provide hands-on experience in deploying, securing, and monitoring a scalable application environment.This is the first part of the project where we will create the architecture and for the later part, the ci/cd will be discussed here ->
+This project aims to provide hands-on experience in deploying, securing, and monitoring a scalable application environment.This is the first part of the project where we will create the architecture and for the later part, the ci/cd will be discussed here -> [blog-cicd](https://github.com/prakrit55/blog-cicd)
 
 
 
@@ -32,7 +33,7 @@ In this project, we will cover the following key points:
     3. Terraform Commands: Use terraform commands such as terraform init, terraform plan, terraform destroy to create and destroy the infra.
 
 
-    
+
 
 # Prequisite
 
@@ -69,12 +70,12 @@ Step 2: Log in to your aws account, search for IAM
 
 Step 3: Install the terraform and aws cli v2, configure them in the environmental variables (you will find a lot of resource to figure this out)
 
-Step 4: Considering you have already installed the above resources,
-    * write `aws configure` and give the previously created aws access key and secret access key to save the user, you can also give the region where the resource to be created.
+Step 4: Considering you have already set up the above resources,
+    * tap `aws configure` in the cli and give the previously created aws access key and secret access key to save the user, you can also give the region where the resource to be created.
 
 Step 5: Move to the repo which you have cloned previously.
 
-Step 6: This step to be performed in accordance to the next part of the        project, move to the second repository and clone the repo and  create you own ci/cd in your repo.
+Step 6: This step has to be performed in accordance to the next part of the project, move to the second repository and clone the repo and  create you own ci/cd in your repo.
 
 Step 7: Considering you are done with `step 6`, lets create the infra.
     * Let us first create the `ECR private repo` and `the s3 where the frontend to be hosted`.
@@ -85,17 +86,16 @@ Step 7: Considering you are done with `step 6`, lets create the infra.
 
     * now tap `terraform plan`, that will show the resources that will get created
 
-    * now tap `terraform apply --auto-approve`, after a while theecr and s3 bucket will get created.
+    * now tap `terraform apply --auto-approve`, after a while the ecr and s3 bucket will get created.
 
     * now move to the other repo you have created and make a small change in the code such as a space at the end of the lines(you can directly create the change in github or can clone the repo and change it by using the below commands)
-
-    * now move to the cli space of the repo cloned, use command `git add`, `git commit -m "any message"`, `git push` to push the code to your repository, this will run the automated ci/cd pipeline and will push the backend image to `ECR` and frontend build `to the S3` bucket.
+    create the small change, move to the cli space of the repo cloned, use command `git add`, `git commit -m "any message"`, `git push` to push the code to your repository, this will run the automated ci/cd pipeline and will push the backend image to `ECR` and frontend build `to the S3` bucket.
 
     * now return to the directory where terraform code is present, un-comment the `ECS module`
 
     * in the cli of the repo, tap `terraform init`, `terraform plan`, `terraform apply --auto approve`, to create the ecs cluster and other things.
 
-    * after a while, you will find that the application loadbalancer, ECS service, task are created
+    * after a while, you will find that the application loadbalancer, ECS service, task is created
 
     * now take the url of the loadbalancer and write it in the repo where you have kept you code (in `my-blog-app/src/api/api.tsx`) and replace it in `API_URL`
 
@@ -108,6 +108,10 @@ Step 7: Considering you are done with `step 6`, lets create the infra.
     * after you are done with the application, run `terraform destroy --auto-approve` to destroy the entire infra. 
 
 # Explanation
+
+
+![alt text](<media/Screenshot (299).png>)
+
 
 Now we get into a brief explanation of the infrastructure
 
